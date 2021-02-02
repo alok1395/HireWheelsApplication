@@ -1,6 +1,7 @@
 package com.upgrad.hirewheels.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Users {
@@ -24,19 +25,21 @@ public class Users {
     @Column(length = 10, nullable = false)
     private String mobile_no;
 
+    @OneToMany (mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private Set<Booking> booking;
 
-    private int role_id;
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
 
     private float wallet_money=10000.00f;
 
-    public Users() {
-    }
+
 
     public int getUser_id() {
         return user_id;
     }
-
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
@@ -44,7 +47,6 @@ public class Users {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -52,7 +54,6 @@ public class Users {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -60,7 +61,6 @@ public class Users {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -68,7 +68,6 @@ public class Users {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -76,26 +75,32 @@ public class Users {
     public String getMobile_no() {
         return mobile_no;
     }
-
     public void setMobile_no(String mobile_no) {
         this.mobile_no = mobile_no;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public Role getRole() {
+        return role;
     }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public float getWallet_money() {
         return wallet_money;
     }
-
-    public void setWallet_money(int wallet_money) {
+    public void setWallet_money(float wallet_money) {
         this.wallet_money = wallet_money;
     }
+
+    public Set<Booking> getBooking() {
+        return booking;
+    }
+    public void setBooking(Set<Booking> booking) {
+        this.booking = booking;
+    }
+
+
 
     @Override
     public String toString() {
@@ -106,8 +111,9 @@ public class Users {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile_no='" + mobile_no + '\'' +
-                ", role_id=" + role_id +
+                ", role_id=" + role +
                 ", wallet_money=" + wallet_money +
+                ", booking_id=" + booking +
                 '}';
     }
 }

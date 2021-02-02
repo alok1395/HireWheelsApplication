@@ -24,15 +24,21 @@ public class Booking {
     @Column(nullable = false)
     private float amount;
 
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
 
-    private int location_id;
-    private int vehicle_id;
-    private int user_id;
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id", nullable = false)
+    private Vehicle vehicle;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user;
 
     public int getBooking_id() {
         return booking_id;
     }
-
     public void setBooking_id(int booking_id) {
         this.booking_id = booking_id;
     }
@@ -40,7 +46,6 @@ public class Booking {
     public LocalDateTime getPickup_date() {
         return pickup_date;
     }
-
     public void setPickup_date(LocalDateTime pickup_date) {
         this.pickup_date = pickup_date;
     }
@@ -48,7 +53,6 @@ public class Booking {
     public LocalDateTime getDropoff_date() {
         return dropoff_date;
     }
-
     public void setDropoff_date(LocalDateTime dropoff_date) {
         this.dropoff_date = dropoff_date;
     }
@@ -56,7 +60,6 @@ public class Booking {
     public LocalDateTime getBooking_date() {
         return booking_date;
     }
-
     public void setBooking_date(LocalDateTime booking_date) {
         this.booking_date = booking_date;
     }
@@ -64,33 +67,29 @@ public class Booking {
     public float getAmount() {
         return amount;
     }
-
     public void setAmount(int amount) {
         this.amount = amount;
     }
 
-    public int getLocation_id() {
-        return location_id;
+    public Location getLocation() {
+        return location;
+    }
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public void setLocation_id(int location_id) {
-        this.location_id = location_id;
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
-    public int getVehicle_id() {
-        return vehicle_id;
+    public Users getUser() {
+        return user;
     }
-
-    public void setVehicle_id(int vehicle_id) {
-        this.vehicle_id = vehicle_id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     @Override
@@ -101,9 +100,9 @@ public class Booking {
                 ", dropoff_date=" + dropoff_date +
                 ", booking_date=" + booking_date +
                 ", amount=" + amount +
-                ", location_id=" + location_id +
-                ", vehicle_id=" + vehicle_id +
-                ", user_id=" + user_id +
+                ", location_id=" + location +
+                ", vehicle_id=" + vehicle +
+                ", user_id=" + user +
                 '}';
     }
 }

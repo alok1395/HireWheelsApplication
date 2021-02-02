@@ -5,10 +5,11 @@ import com.upgrad.hirewheels.entities.Users;
 import com.upgrad.hirewheels.exceptions.IncorrectPasswordException;
 import com.upgrad.hirewheels.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-
-public class UsersServiceImpl {
+@Service
+public class UsersServiceImpl  implements UsersService{
     @Autowired
     UsersDao usersDao;
 

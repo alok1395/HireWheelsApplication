@@ -2,17 +2,21 @@ package com.upgrad.hirewheels.services;
 
 import com.upgrad.hirewheels.dao.VehicleDao;
 import com.upgrad.hirewheels.entities.Vehicle;
-import org.springframework.data.domain.Example;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class VehicleServiceImpl {
+@Service
+public class VehicleServiceImpl implements VehicleService{
 
   // private Example pageRequest;
+    @Autowired
+    VehicleDao vehicleDao;
 
     public List<Vehicle> getAllVehicles(){
-        //return VehicleDao.findAll(pageRequest);
-        return null;
+        //return VehicleDao.findAll();
+       return null;
     }
 
     public List<Vehicle> getAvailableVehicles(){

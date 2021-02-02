@@ -16,6 +16,8 @@ public class VehicleCategory {
     @OneToMany (mappedBy = "vehicleCategory", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<VehicleSubcategory> vehicleSubcategory;
 
+    public VehicleCategory(int vehicle_category_id, String vehicle_category_name) {
+    }
 
 
     public int getVehicle_category_id() {

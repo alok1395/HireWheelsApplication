@@ -16,6 +16,9 @@ public class Role {
     @OneToMany (mappedBy = "role", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<Users> user;
 
+    public Role(int role_id, String role_name) {
+    }
+
     public int getRole_id() {
         return role_id;
     }

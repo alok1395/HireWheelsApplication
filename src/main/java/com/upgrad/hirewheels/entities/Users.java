@@ -35,6 +35,12 @@ public class Users {
 
     private float wallet_money=10000.00f;
 
+    public Users(String firstName, String lastName, String password, String email, String mobile_no, int wallet_money, Role byRoleId) {
+    }
+
+    public Users() {
+
+    }
 
 
     public int getUser_id() {

@@ -17,6 +17,9 @@ public class City {
     @OneToMany (mappedBy = "city", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<Location> location;
 
+    public City(int city_id, String city_name) {
+    }
+
     public int getCity_id() {
         return city_id;
     }

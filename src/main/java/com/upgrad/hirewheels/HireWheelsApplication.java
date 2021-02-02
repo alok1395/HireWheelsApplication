@@ -4,9 +4,12 @@ import com.upgrad.hirewheels.dao.RoleDao;
 import com.upgrad.hirewheels.dao.UsersDao;
 import com.upgrad.hirewheels.entities.Role;
 import com.upgrad.hirewheels.entities.Users;
+import com.upgrad.hirewheels.services.InitService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -26,7 +29,7 @@ public class HireWheelsApplication {
 
         ApplicationContext context = SpringApplication.run(HireWheelsApplication.class, args);
 
-        UsersDao usersDao = context.getBean(UsersDao.class);
+        /*UsersDao usersDao = context.getBean(UsersDao.class);
         RoleDao roleDao = context.getBean(RoleDao.class);
 
         Role role1 = new Role();
@@ -136,9 +139,19 @@ public class HireWheelsApplication {
         //RoleDao.findAll().forEach(System.out::println);
 
        // RoleDao.findById(role1.getRole_id())
-                //.ifPresent(role -> role.getUser().forEach(System.out::println));
+                //.ifPresent(role -> role.getUser().forEach(System.out::println)); */
+        InitService initService = context.getBean(InitService.class);
+        initService.start();
+
 
 
     }
+
+   /* @Bean
+    CommandLineRunner init (InitService initService){
+        return args -> {
+            initService.init();
+        };
+    }*/
 
 }

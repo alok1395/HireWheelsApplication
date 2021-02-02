@@ -29,6 +29,12 @@ public class Location {
     @OneToMany (mappedBy = "location", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<Booking> booking;
 
+    public Location(int location_id, String location_name, String address, int pincode, Object city) {
+        
+    }
+
+
+
     public int getLocation_id() {
         return location_id;
     }

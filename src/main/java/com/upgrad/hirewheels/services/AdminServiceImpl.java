@@ -11,13 +11,13 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     VehicleDao vehicleDao;
 
-    public Vehicle registerVehicle() {
-        registerVehicle().setAvailability_status("1");
+    public Vehicle registerVehicle(Vehicle vehicle) {
+       // registerVehicle(Vehicle vehicle).setAvailability_status("1");
         return null;
     }
 
-    public Vehicle changeAvailability() {
-        changeAvailability().setAvailability_status("0");
+    public Vehicle changeAvailability(int id, Vehicle vehicle) {
+        //changeAvailability().setAvailability_status("0");
         return null;
     }
 

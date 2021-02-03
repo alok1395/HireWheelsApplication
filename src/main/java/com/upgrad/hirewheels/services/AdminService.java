@@ -4,7 +4,7 @@ import com.upgrad.hirewheels.entities.Vehicle;
 
 
 public interface AdminService {
-    public Vehicle registerVehicle() ;
-    public Vehicle changeAvailability() ;
+    public Vehicle registerVehicle(Vehicle vehicle) ;
+    public Vehicle changeAvailability(int id, Vehicle vehicle ) ;
 
     }

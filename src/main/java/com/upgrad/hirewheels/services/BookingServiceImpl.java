@@ -11,8 +11,16 @@ public class BookingServiceImpl implements BookingService{
     @Autowired
     BookingDao bookingDao;
 
-    public Booking addBooking(){
+    @Autowired
+    UsersService usersService;
+
+    @Override
+    public Booking addBooking(Booking booking) {
+
+        /*VehicleService.getAvailableVehicles(booking.getUser().getClass());
+        usersService.getUser(booking.getUser().getBooking());
+        bookingDao.save(booking);
+        return booking;*/
         return null;
     }
-
 }

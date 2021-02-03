@@ -21,5 +21,17 @@ public class UsersServiceImpl  implements UsersService{
         return users;
     }
 
+    @Override
+    public Users getUsersDetailsByEmail(String email) {
+        return null;
+    }
+
+
+
+    @Override
+    public Users acceptUsersDetails(Users newUsers) {
+        return null;
+    }
+
 
 }

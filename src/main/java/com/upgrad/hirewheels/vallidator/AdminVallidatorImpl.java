@@ -3,9 +3,11 @@ package com.upgrad.hirewheels.vallidator;
 import com.upgrad.hirewheels.dto.VehicleDTO;
 import com.upgrad.hirewheels.exceptions.APIException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 
+@Service
 public class AdminVallidatorImpl  implements AdminVallidator{
 
     @Autowired

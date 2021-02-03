@@ -21,7 +21,7 @@ public class BookingController {
     @Autowired
     ModelMapper modelMapper;
 
-    @PostMapping(value="/movies", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value= "/hirewheels/v1/vehicle", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity newBooking(@RequestBody BookingDTO movieDTO) {
         Booking newBooking = modelMapper.map(movieDTO, Booking.class);
         Booking savedBooking = bookingService.addBooking(newBooking);

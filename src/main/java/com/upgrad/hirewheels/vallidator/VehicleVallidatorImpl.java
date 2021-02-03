@@ -5,10 +5,13 @@ import com.upgrad.hirewheels.dto.VehicleDTO;
 import com.upgrad.hirewheels.exceptions.APIException;
 import com.upgrad.hirewheels.utils.DateDifference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
 
+
+@Service
 public class VehicleVallidatorImpl implements  VehicleVallidator {
 
     @Autowired

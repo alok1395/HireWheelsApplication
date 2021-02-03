@@ -11,13 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
+@RestController
+@RequestMapping(value="//hirewheels/v1")
 public class AdminController {
 
 
@@ -30,7 +29,7 @@ public class AdminController {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(AdminController.class);
 
 
-    @PostMapping(value = "/hirewheels/v1/vehicles", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/vehicles", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addVehicle(@RequestBody VehicleDTO vehicleDTO) {
         Vehicle newVehicle = modelmapper.map(vehicleDTO, Vehicle.class);
         Vehicle savedVehicle = adminService.registerVehicle(newVehicle);
@@ -39,7 +38,7 @@ public class AdminController {
         return new ResponseEntity<>(savedVehicleDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "‘/hirewheels/v1/vehicles/{vehicleid}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "‘/vehicles/{vehicleid}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity changeVehicleAvailability(@PathVariable(name = "vehicleid") int id, @RequestBody
             VehicleDTO vehicleDTO) throws VehicleDetailsNotFoundException {
         Vehicle newVehicle = modelmapper.map(vehicleDTO, Vehicle.class);

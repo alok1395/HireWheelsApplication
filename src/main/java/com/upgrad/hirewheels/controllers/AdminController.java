@@ -6,6 +6,7 @@ import com.upgrad.hirewheels.exceptions.VehicleDetailsNotFoundException;
 import com.upgrad.hirewheels.services.AdminService;
 import com.upgrad.hirewheels.services.VehicleService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.logging.Logger;
 
 public class AdminController {
 
@@ -24,11 +27,15 @@ public class AdminController {
     @Autowired
     ModelMapper modelmapper;
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(AdminController.class);
+
+
     @PostMapping(value = "/hirewheels/v1/vehicles", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addVehicle(@RequestBody VehicleDTO vehicleDTO) {
         Vehicle newVehicle = modelmapper.map(vehicleDTO, Vehicle.class);
         Vehicle savedVehicle = adminService.registerVehicle(newVehicle);
         VehicleDTO savedVehicleDTO = modelmapper.map(savedVehicle, VehicleDTO.class);
+        logger.info("Get Vehicle details :" + savedVehicleDTO);
         return new ResponseEntity<>(savedVehicleDTO, HttpStatus.CREATED);
     }
 
@@ -38,6 +45,7 @@ public class AdminController {
         Vehicle newVehicle = modelmapper.map(vehicleDTO, Vehicle.class);
         Vehicle updatedVehicle = adminService.changeAvailability(id, newVehicle);
         VehicleDTO updatedVehicleDTO = modelmapper.map(updatedVehicle, VehicleDTO.class);
+        logger.info("Get Vehicle details :" + updatedVehicleDTO);
         return new ResponseEntity<>(updatedVehicleDTO, HttpStatus.OK);
     }
 
